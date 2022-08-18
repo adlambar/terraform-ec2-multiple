@@ -25,7 +25,7 @@ resource "aws_instance" "instance" {
        FileSystem = "/web/data"
        Name = "/web/data"
     }
-    volume_size = 2
+    volume_size = 4
     volume_type = "gp2"
     delete_on_termination = true
   }
