@@ -10,6 +10,7 @@ data "aws_security_groups" "sgs" {
 }
 
 resource "aws_instance" "instance" {  
+  count                     = var.instances_count
   ami                       = var.instance_ami
   instance_type             = var.instance_type
   key_name                  = "ec2_keypair"
