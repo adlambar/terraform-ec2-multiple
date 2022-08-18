@@ -19,7 +19,7 @@ resource "aws_instance" "instance" {
   tags = {    
     Name = "${var.instance_name}-${count.index}"
   }
-  ebs_block_device {
+  ebs_block_device = {
     device_name = "/dev/xvdba"
     tags = {
        FileSystem = "/web/data"
