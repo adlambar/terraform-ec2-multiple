@@ -19,7 +19,7 @@ resource "aws_instance" "instance" {
   tags = {    
     Name = "${var.instance_name}-${count.index}"
   }
-  ebs_block_device  {
+ /* ebs_block_device  {
     device_name = "/dev/xvdf"
     tags = {
        FileSystem = "/web/data"
@@ -28,5 +28,16 @@ resource "aws_instance" "instance" {
     volume_size = 4
     volume_type = "gp2"
     delete_on_termination = true
+  }*/
+}
+
+/*resource "aws_ebs_volume" "ebs_volume" {
+  count             = var.instances_count
+  availability_zone = aws_instance.instance[count.index].availability_zone
+  size              = 4
+  type              = "gp2"
+  tags = {
+    name = "${var.tag}-ebs-volume"   
   }
 }
+*/
