@@ -23,9 +23,10 @@ resource "aws_instance" "instance" {
     device_name = "/dev/xvdf"
     tags = {
        FileSystem = "/web/data"
+       Name = "/web/data"
     }
     volume_size = 2
-    volume_type = "gp3"
+    volume_type = "gp2"
     delete_on_termination = true
   }
 }
