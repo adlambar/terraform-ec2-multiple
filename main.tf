@@ -32,18 +32,18 @@ resource "aws_instance" "instance" {
 }
 
 resource "aws_ebs_volume" "ebs_volume" {
-  count             = var.instances_count * var.volumenes_count
-  availability_zone = aws_instance.instance[floor(count.index / var.volumenes_count)].availability_zone
+  count             = var.instances_count * var.volumes_count
+  availability_zone = aws_instance.instance[floor(count.index / var.volumes_count)].availability_zone
   size              = 4
   type              = "gp2"
   tags = {
-    Name = "${var.instance_name}-${floor(count.index / var.volumenes_count)}-ebs-volume-${count.index % var.volumenes_count}"   
+    Name = "${var.instance_name}-${floor(count.index / var.volumes_count)}-ebs-volume-${count.index % var.volumes_count}"   
   }
 }
 
 resource "aws_volume_attachment" "ebs_att" {
-  count       = var.instances_count * var.volumnes_count
-  device_name = "/dev/sd${count.index % var.volumenes_count}"
+  count       = var.instances_count * var.volumes_count
+  device_name = "/dev/sd${count.index % var.volumes_count}"
   volume_id   = aws_ebs_volume.ebs_volume[count.index].id
-  instance_id = aws_instance.instance[floor(count.index / var.volumenes_count)].id
+  instance_id = aws_instance.instance[floor(count.index / var.volumes_count)].id
 }
