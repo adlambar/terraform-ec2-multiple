@@ -28,3 +28,10 @@ mount /dev/xvdi1 /usr/sap
 
 #To grow partition
 growpart /dev/xvdf 1
+
+#To Grow FS
+[XFS file system]
+xfs_growfs -d /filesystem
+
+[Ext4 file system]
+resize2fs /dev/xvdf1
