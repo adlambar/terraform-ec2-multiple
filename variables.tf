@@ -45,6 +45,29 @@ variable "instances_count" {
   default     = 1
 }
 
+variable "volumes" {
+  type = list
+  description = "List of volumes"
+  default = [
+      {
+        Name = "shared"
+		type = "gp2"
+        size = 1
+		
+      },
+      {
+        Name = "data"
+		type = "gp2"
+        size = 2
+      },
+      {
+        Name = "log"
+		type = "gp2"
+        size = 3
+      }
+  ]
+}
+/*
 variable "volumes_count" {
   description = "Number of EBS volumes per EC2 instances"
   type        = number
@@ -55,7 +78,7 @@ variable "volumes_size" {
   description = "Size of EBS volumes"
   type        = number
   default     = 1
-}
+}*/
 
 /*
 Free Tiers for N. Virginia
