@@ -67,18 +67,6 @@ variable "volumes" {
       }
   ]
 }
-/*
-variable "volumes_count" {
-  description = "Number of EBS volumes per EC2 instances"
-  type        = number
-  default     = 1
-}
-
-variable "volumes_size" {
-  description = "Size of EBS volumes"
-  type        = number
-  default     = 1
-}*/
 
 /*
 Free Tiers for N. Virginia
