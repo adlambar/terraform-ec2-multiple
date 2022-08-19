@@ -63,7 +63,7 @@ variable "volumes" {
       {
         Name = "log"
 		type = "gp2"
-        size = 3
+        size = 1
       }
   ]
 }
