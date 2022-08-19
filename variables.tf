@@ -18,6 +18,17 @@ variable "instance_ami" {
   default     = "ami-052efd3df9dad4825"
 }
 
+variable "instance_device_names" {
+  description = "Multiple devices for each ec2 instance"
+  default = [
+    "/dev/sdf",
+    "/dev/sdg",
+    "/dev/sdh",
+    "/dev/sdi",
+    "/dev/sdj"
+  ]
+}
+
 variable "instance_user_data" {
   description = "Init script user_data"
   default     = "init-script.sh"
