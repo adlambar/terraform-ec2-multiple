@@ -19,16 +19,6 @@ resource "aws_instance" "instance" {
   tags = {    
     Name = "${var.instance_name}-${count.index}"
   }
- /* ebs_block_device  {
-    device_name = "/dev/xvdf"
-    tags = {
-       FileSystem = "/web/data"
-       Name = "/web/data"
-    }
-    volume_size = 4
-    volume_type = "gp2"
-    delete_on_termination = true
-  }*/
 }
 */
 resource "aws_ebs_volume" "ebs_volume" {
