@@ -34,7 +34,7 @@ resource "aws_instance" "instance" {
 resource "aws_ebs_volume" "ebs_volume" {
   count             = var.instances_count * var.volumes_count
   availability_zone = aws_instance.instance[floor(count.index / var.volumes_count)].availability_zone
-  size              = 4
+  size              = var.volumes_size
   type              = "gp2"
   tags = {
     Name = "${var.instance_name}-${floor(count.index / var.volumes_count)}-ebs-volume-${count.index % var.volumes_count}"   
