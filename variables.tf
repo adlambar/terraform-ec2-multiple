@@ -50,6 +50,13 @@ variable "volumes_count" {
   type        = number
   default     = 1
 }
+
+variable "volumes_size" {
+  description = "Size of EBS volumes"
+  type        = number
+  default     = 1
+}
+
 /*
 Free Tiers for N. Virginia
 Amazon Linux 2 AMI (HVM) - Kernel 5.10, SSD Volume Type     ami-090fa75af13c156b4
