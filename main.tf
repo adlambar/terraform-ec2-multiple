@@ -31,13 +31,19 @@ resource "aws_instance" "instance" {
   }*/
 }
 
-/*resource "aws_ebs_volume" "ebs_volume" {
+resource "aws_ebs_volume" "ebs_volume" {
   count             = var.instances_count
   availability_zone = aws_instance.instance[count.index].availability_zone
   size              = 4
   type              = "gp2"
   tags = {
-    name = "${var.tag}-ebs-volume"   
+    name = "${var.instance_name}-${count.index}-ebs-volume"   
   }
 }
-*/
+
+resource "aws_volume_attachment" "ebs_att" {
+  count       = var.instances_count
+  device_name = "/dev/sdf"
+  volume_id   = aws_ebs_volume.ebs_volume[count.index].id
+  instance_id = aws_instance.instance[count.index].id
+}
