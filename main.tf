@@ -30,10 +30,10 @@ resource "aws_ebs_volume" "ebs_volume" {
     Name = "${var.instance_name}-${floor(count.index / length(var.volumes))}-ebs-volume-${var.volumes[count.index % length(var.volumes)].Name}"   
   }
 }
-/*
+
 resource "aws_volume_attachment" "ebs_att" {
-  count       = var.instances_count * var.volumes_count
-  device_name = "${var.instance_device_names[count.index % var.volumes_count]}"
+  count       = var.instances_count * length(var.volumes)
+  device_name = "${var.instance_device_names[count.index % length(var.volumes)]}"
   volume_id   = aws_ebs_volume.ebs_volume[count.index].id
-  instance_id = aws_instance.instance[floor(count.index / var.volumes_count)].id
-}*/
+  instance_id = aws_instance.instance[floor(count.index / length(var.volumes))].id
+}
