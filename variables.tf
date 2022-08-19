@@ -34,8 +34,8 @@ variable "instances_count" {
   default     = 1
 }
 
-variable "volumenes_count" {
-  description = "Number of EBS volumenes per EC2 instances"
+variable "volumes_count" {
+  description = "Number of EBS volumes per EC2 instances"
   type        = number
   default     = 1
 }
