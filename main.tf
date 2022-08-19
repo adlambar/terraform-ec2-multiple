@@ -24,8 +24,8 @@ resource "aws_instance" "instance" {
 resource "aws_ebs_volume" "ebs_volume" {
   count             = var.instances_count * length(var.volumes)
   availability_zone = aws_instance.instance[floor(count.index / length(var.volumes))].availability_zone
-  size              = var.volumes[var.volumes[count.index % var.volumes_count].size
-  type              = var.volumes[var.volumes[count.index % var.volumes_count].type
+  size              = var.volumes[count.index % var.volumes_count].size
+  type              = var.volumes[count.index % var.volumes_count].type
   tags = {
     Name = "${var.instance_name}-${floor(count.index / length(var.volumes))}-ebs-volume-${var.volumes[count.index % var.volumes_count].Name}"   
   }
