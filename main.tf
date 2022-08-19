@@ -37,7 +37,7 @@ resource "aws_ebs_volume" "ebs_volume" {
   size              = 4
   type              = "gp2"
   tags = {
-    name = "${var.instance_name}-${count.index}-ebs-volume"   
+    Name = "${var.instance_name}-${count.index}-ebs-volume"   
   }
 }
 
