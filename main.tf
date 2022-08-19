@@ -42,8 +42,8 @@ resource "aws_ebs_volume" "ebs_volume" {
 }
 
 resource "aws_volume_attachment" "ebs_att" {
-  count       = var.instances_count
-  device_name = "/dev/sdf"
+  count       = var.instances_count * var.volumnes_count
+  device_name = "/dev/sd${count.index % var.volumenes_count}"
   volume_id   = aws_ebs_volume.ebs_volume[count.index].id
-  instance_id = aws_instance.instance[count.index].id
+  instance_id = aws_instance.instance[floor(count.index / var.volumenes_count)].id
 }
