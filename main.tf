@@ -8,7 +8,7 @@ data "aws_security_groups" "sgs" {
     values = [var.instance_sgs]
   }
 }
-/*
+
 resource "aws_instance" "instance" {  
   count                     = var.instances_count
   ami                       = var.instance_ami
@@ -20,7 +20,7 @@ resource "aws_instance" "instance" {
     Name = "${var.instance_name}-${count.index}"
   }
 }
-*/
+
 resource "aws_ebs_volume" "ebs_volume" {
   count             = var.instances_count * length(var.volumes)
   availability_zone = aws_instance.instance[floor(count.index / length(var.volumes))].availability_zone
