@@ -2,6 +2,6 @@
 users:
   - name: terraform
     groups: users
-	sudo:  ALL=(ALL) NOPASSWD:ALL
+    sudo: ALL=(ALL) NOPASSWD:ALL
     ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSL7uWGj8cgWyIOaspgKdVy0cKJ+UTjfv7jBOjG2H/GN8bJVXy72XAvnhM0dUM+CCs8FOf0YlPX+Frvz2hKInrmRhZVwRSL129PasD12MlI3l44u6IwS1o/W86Q+tkQYEljtqDOo0a+cOsaZkvUNzUyEXUwz/lmYa6G4hMKZH4NBj7nbAAF96wsMCoyNwbWryBnDYUr6wMbjRR1J9Pw7Xh7WRC73wy4Va2YuOgbD3V/5ZrFPLbWZW/7TFXVrql04QVbyei4aiFR5n//GvoqwQDNe58LmbzX/xvxyKJYdny2zXmdAhMxbrpFQsfpkJ9E/H5w0yOdSvnWbUoG5xNGoOB csmith@fringe
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCHxhfXZt+uIL//m82xbBTZko4x5Somq3ibTkP/zj1wNj/bgXHx+GTTaezqTHB+GxgObwzxcmU8qkArOVwsQwAPYTcyuhNjWGYMxjI9aMouS9p2YyWBoYLZ2HzlvKxhh6Ol9qO8fs4kBGYSZMqW3prhgIorqv7eJAEtxIqCW5/ACAP1VcPPHjYFr5TRkzYoa5CyF7Yb5kGkVZW4piJeFSL5ECw8Kt82paS4PEh/6zn01nOjGu0XG5Bq+naZGrpynx03juBBX6/zMudax3/q5ay8hXRNSRBMpwwleXJuNNbFb5xT7csO9gz5NcEpJxybIW9HSR1ZQWUlT3AW/ZawaNXB ec2_keypair
