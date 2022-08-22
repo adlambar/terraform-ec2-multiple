@@ -19,6 +19,7 @@ resource "aws_instance" "instance" {
   tags = {    
     Name = "${var.instance_name}-${count.index}"
   }
+  depends_on = [aws_ebs_volume.ebs_volume]
 }
 
 resource "aws_ebs_volume" "ebs_volume" {
