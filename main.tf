@@ -36,6 +36,6 @@ resource "aws_volume_attachment" "ebs_att" {
   device_name = "${var.instance_device_names[count.index % length(var.volumes)]}"
   volume_id   = aws_ebs_volume.ebs_volume[count.index].id
   instance_id = aws_instance.instance[floor(count.index / length(var.volumes))].id
-  #stop_instance_before_detaching = true
-  force_detach = true
+  stop_instance_before_detaching = true
+  #force_detach = true
 }
