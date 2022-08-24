@@ -8,14 +8,31 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
-variable "instance_name" {
-  description = "EC2 instance name"
-  default     = "Provisioned by Terraform"
+variable "instance_config" {
+  type = list
+  description = "Configuration EC2 instance"
+  default = [
+      {
+        Name = "Ubuntu"
+        userdata = "init-script.sh"
+        ami = "ami-052efd3df9dad4825"
+      },
+      {
+        Name = "RedHat"
+        userdata = "init-script.sh"
+        ami = "ami-06640050dc3f556bb"
+      },
+      {
+        Name = "Jenkins"
+        userdata = "init-script.sh"
+        ami = "ami-042b275a369428cc7"
+      }
+  ]
 }
 
-variable "instance_ami" {
-  description = "EC2 instance AMI"
-  default     = "ami-052efd3df9dad4825"
+variable "instance_sgs" {
+  description = "Security Groups"
+  default     = "general"
 }
 
 variable "instance_device_names" {
@@ -29,40 +46,23 @@ variable "instance_device_names" {
   ]
 }
 
-variable "instance_user_data" {
-  description = "Init script user_data"
-  default     = "init-script.sh"
-}
-
-variable "instance_sgs" {
-  description = "Security Groups"
-  default     = "general"
-}
-
-variable "instances_count" {
-  description = "Number of EC2 instances"
-  type        = number
-  default     = 1
-}
-
 variable "volumes" {
   type = list
   description = "List of volumes"
   default = [
       {
         Name = "shared"
-		type = "gp2"
-        size = 1
-		
+	type = "gp2"
+        size = 1		
       },
       {
         Name = "data"
-		type = "gp2"
+	type = "gp2"
         size = 2
       },
       {
         Name = "log"
-		type = "gp2"
+	type = "gp2"
         size = 1
       }
   ]
