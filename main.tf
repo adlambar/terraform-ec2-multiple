@@ -27,7 +27,7 @@ resource "aws_ebs_volume" "ebs_volume" {
   size              = var.volumes[count.index % length(var.volumes)].size
   type              = var.volumes[count.index % length(var.volumes)].type
   tags = {
-    Name = "${var.instance_config[floor(count.index / length(var.volumes))].ami}-ebs-volume-${var.volumes[count.index % length(var.volumes)].Name}"   
+    Name = "${var.instance_config[floor(count.index / length(var.volumes))].Name}-ebs-volume-${var.volumes[count.index % length(var.volumes)].Name}"   
   }
 }
 
