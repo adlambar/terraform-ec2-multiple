@@ -8,66 +8,6 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
-variable "instance_name" {
-  description = "EC2 instance name"
-  default     = "Provisioned by Terraform"
-}
-
-variable "instance_ami" {
-  description = "EC2 instance AMI"
-  default     = "ami-052efd3df9dad4825"
-}
-
-variable "instance_device_names" {
-  description = "Multiple devices for each ec2 instance"
-  default = [
-    "/dev/sdf",
-    "/dev/sdg",
-    "/dev/sdh",
-    "/dev/sdi",
-    "/dev/sdj"
-  ]
-}
-
-variable "instance_user_data" {
-  description = "Init script user_data"
-  default     = "init-script.sh"
-}
-
-variable "instance_sgs" {
-  description = "Security Groups"
-  default     = "general"
-}
-
-variable "instances_count" {
-  description = "Number of EC2 instances"
-  type        = number
-  default     = 1
-}
-
-variable "volumes" {
-  type = list
-  description = "List of volumes"
-  default = [
-      {
-        Name = "shared"
-		type = "gp2"
-        size = 1
-		
-      },
-      {
-        Name = "data"
-		type = "gp2"
-        size = 2
-      },
-      {
-        Name = "log"
-		type = "gp2"
-        size = 1
-      }
-  ]
-}
-
 variable "instance_config" {
   type = list
   description = "Configuration EC2 instance"
@@ -86,6 +26,44 @@ variable "instance_config" {
         Name = "Jenkins"
         userdata = "init-script.sh"
         ami = "ami-042b275a369428cc7"
+      }
+  ]
+}
+
+variable "instance_sgs" {
+  description = "Security Groups"
+  default     = "general"
+}
+
+variable "instance_device_names" {
+  description = "Multiple devices for each ec2 instance"
+  default = [
+    "/dev/sdf",
+    "/dev/sdg",
+    "/dev/sdh",
+    "/dev/sdi",
+    "/dev/sdj"
+  ]
+}
+
+variable "volumes" {
+  type = list
+  description = "List of volumes"
+  default = [
+      {
+        Name = "shared"
+	type = "gp2"
+        size = 1		
+      },
+      {
+        Name = "data"
+	type = "gp2"
+        size = 2
+      },
+      {
+        Name = "log"
+	type = "gp2"
+        size = 1
       }
   ]
 }
