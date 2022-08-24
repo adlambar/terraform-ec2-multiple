@@ -68,6 +68,28 @@ variable "volumes" {
   ]
 }
 
+variable "instance_config" {
+  type = list
+  description = "Configuration EC2 instance"
+  default = [
+      {
+        Name = "Ubuntu"
+        userdata = "init-script.sh"
+        ami = "ami-052efd3df9dad4825"
+      },
+      {
+        Name = "RedHat"
+        userdata = "init-script.sh"
+        ami = "ami-06640050dc3f556bb"
+      },
+      {
+        Name = "Jenkins"
+        userdata = "init-script.sh"
+        ami = "ami-042b275a369428cc7"
+      }
+  ]
+}
+
 /*
 Free Tiers for N. Virginia
 Amazon Linux 2 AMI (HVM) - Kernel 5.10, SSD Volume Type     ami-090fa75af13c156b4
